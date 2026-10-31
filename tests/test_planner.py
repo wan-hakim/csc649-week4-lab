@@ -17,8 +17,34 @@ def test_days_left_counts_days_until_due():
 # Now write the tests below. Use the same three steps: Arrange, Act, Assert.
 # TODO 1: days_left is negative when the task is overdue.
 # TODO 2: is_urgent is True when the task is due tomorrow.
+
+def test_is_urgent_when_due_tomorrow():
+    today = date(2026, 10, 19)
+    due = date(2026, 10, 20)
+    assert is_urgent(due, today) is True
+
+
 # TODO 3: is_urgent is True when the task is due in exactly 2 days (the limit).
+def test_is_urgent_when_due_in_two_days():
+    # Arrange
+    today = date(2026, 10, 19)
+    due = date(2026, 11, 1)
+    # Act
+    result = is_urgent(due, today)
+    # Assert
+    assert result is False
+
+
 # TODO 4: is_urgent is False when the task is overdue.
+def test_is_urgent_when_overdue():
+    # Arrange
+    today = date(2026, 10, 19)
+    due = date(2026, 10, 18)
+    # Act
+    result = is_urgent(due, today)
+    # Assert
+    assert result is False
+
 # TODO 5: sort_by_due puts the soonest task first.
 # TODO 6: completion_rate returns 0.0 when there are no tasks.
 # TODO 7: completion_rate(1, 3) returns 33.3.
